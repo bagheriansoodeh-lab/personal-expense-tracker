@@ -2,37 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Personal Expense Tracker</title>
+  <title>FinTrack – Personal Finance Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>Expense Tracker</h1>
-    <p class="subtitle">Track your expenses and understand your spending</p>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">FinTrack</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-    <div class="summary">
-      <div>
-        <strong id="totalAmount">0</strong>
-        <span>Total Expenses</span>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Take Control of Your Personal Finances</h1>
+    <p>Track expenses, analyze spending, and make better financial decisions.</p>
+    <button>Get Started</button>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section id="dashboard" class="dashboard">
+    <h2>Dashboard Preview</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p class="amount">€1,240</p>
+      </div>
+
+      <div class="card">
+        <h3>Top Category</h3>
+        <p class="amount">Rent</p>
+      </div>
+
+      <div class="card">
+        <h3>This Month</h3>
+        <p class="amount">€320</p>
       </div>
     </div>
+  </section>
 
-    <div class="form">
-      <input type="number" id="amountInput" placeholder="Amount">
-      <select id="categoryInput">
-        <option value="Food">Food</option>
-        <option value="Rent">Rent</option>
-        <option value="Transport">Transport</option>
-        <option value="Other">Other</option>
-      </select>
-      <input type="text" id="descriptionInput" placeholder="Description">
-      <button onclick="addExpense()">Add Expense</button>
-    </div>
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About FinTrack</h2>
+    <p>
+      FinTrack is a simple personal finance dashboard designed to help users
+      understand their spending habits and manage their expenses effectively.
+    </p>
+  </section>
 
-    <ul id="expenseList"></ul>
-  </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 FinTrack. All rights reserved.</p>
+  </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
