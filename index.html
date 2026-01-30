@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Expense Tracker</h1>
+    <p class="subtitle">Track your expenses and understand your spending</p>
+
+    <div class="summary">
+      <div>
+        <strong id="totalAmount">0</strong>
+        <span>Total Expenses</span>
+      </div>
+    </div>
+
+    <div class="form">
+      <input type="number" id="amountInput" placeholder="Amount">
+      <select id="categoryInput">
+        <option value="Food">Food</option>
+        <option value="Rent">Rent</option>
+        <option value="Transport">Transport</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="descriptionInput" placeholder="Description">
+      <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <ul id="expenseList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
