@@ -140,4 +140,15 @@ nav a {
   cursor: pointer;
   border-radius: 4px;
 }
+.cards {
+  margin-bottom: 30px;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
 
