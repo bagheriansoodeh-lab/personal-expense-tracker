@@ -45,7 +45,17 @@
       <button onclick="addExpense()">Add Expense</button>
     </div>
 
-    <ul id="expenseList"></ul>
+    <table class="expense-table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Category</th>
+      <th onclick="sortByAmount()">Amount (€)</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="expenseList"></tbody>
+</table>
   </section>
 
   <script src="script.js"></script>
