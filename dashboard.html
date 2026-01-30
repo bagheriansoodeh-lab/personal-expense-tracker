@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FinTrack Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">FinTrack</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- DASHBOARD CONTENT -->
+  <section class="dashboard">
+    <h1>Your Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p class="amount" id="totalAmount">€0</p>
+      </div>
+
+      <div class="card">
+        <h3>Top Category</h3>
+        <p class="amount" id="topCategory">-</p>
+      </div>
+    </div>
+
+    <!-- ADD EXPENSE -->
+    <div class="form">
+      <input type="number" id="amountInput" placeholder="Amount">
+      <select id="categoryInput">
+        <option value="Food">Food</option>
+        <option value="Rent">Rent</option>
+        <option value="Transport">Transport</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="descriptionInput" placeholder="Description">
+      <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <ul id="expenseList"></ul>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
