@@ -1,3 +1,4 @@
+let sortAscending = true;
 const expenseList = document.getElementById("expenseList");
 const amountInput = document.getElementById("amountInput");
 const categoryInput = document.getElementById("categoryInput");
@@ -32,20 +33,16 @@ function renderDashboard() {
     categoryTotals[expense.category] =
       (categoryTotals[expense.category] || 0) + expense.amount;
 
-    const li = document.createElement("li");
-    li.textContent = `${expense.category}: €${expense.amount} (${expense.description})`;
+const tr = document.createElement("tr");
+tr.innerHTML = `
+  <td>${expense.description}</td>
+  <td>${expense.category}</td>
+  <td>€${expense.amount.toFixed(2)}</td>
+  <td><button onclick="deleteExpense(${index})">X</button></td>
+`;
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "X";
-    deleteBtn.onclick = () => {
-      expenses.splice(index, 1);
-      saveExpenses();
-      renderDashboard();
-    };
+expenseList.appendChild(tr);
 
-    li.appendChild(deleteBtn);
-    expenseList.appendChild(li);
-  });
 
   totalAmountEl.textContent = `€${total.toFixed(2)}`;
   topCategoryEl.textContent = getTopCategory(categoryTotals);
@@ -69,3 +66,17 @@ function saveExpenses() {
 }
 
 renderDashboard();
+function sortByAmount() {
+  expenses.sort((a, b) => {
+    return sortAscending ? a.amount - b.amount : b.amount - a.amount;
+  });
+
+  sortAscending = !sortAscending;
+  renderDashboard();
+}
+  function deleteExpense(index) {
+  expenses.splice(index, 1);
+  saveExpenses();
+  renderDashboard();
+}
+
