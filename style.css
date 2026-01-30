@@ -1,56 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  background: #f5f7fa;
+  color: #333;
 }
 
-.container {
-  width: 350px;
-  margin: 40px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-h1 {
-  text-align: center;
-}
-
-.subtitle {
-  text-align: center;
-  color: #555;
-  font-size: 14px;
-}
-
-.summary {
-  background: #eef2f7;
-  padding: 10px;
-  margin: 15px 0;
-  text-align: center;
-  border-radius: 6px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-input, select, button {
-  padding: 6px;
-}
-
-button {
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
-}
-
-li {
+/* HEADER */
+.header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  padding: 15px 40px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 40px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.hero button {
+  padding: 10px 25px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* DASHBOARD */
+.dashboard {
+  padding: 60px 40px;
+}
+
+.dashboard h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 200px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.amount {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ABOUT */
+.about {
+  padding: 60px 40px;
+  background: white;
+  text-align: center;
+}
+
+.about p {
+  max-width: 600px;
+  margin: auto;
+  color: #555;
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #f0f0f0;
+  font-size: 14px;
 }
