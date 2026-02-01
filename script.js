@@ -24,6 +24,8 @@ function addExpense() {
 }
 
 function renderDashboard() {
+  const emptyState = document.getElementById("emptyState");
+
   expenseList.innerHTML = "";
 
   let total = 0;
@@ -33,6 +35,21 @@ function renderDashboard() {
     total += expense.amount;
     categoryTotals[expense.category] =
       (categoryTotals[expense.category] || 0) + expense.amount;
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${expense.description}</td>
+      <td>${expense.category}</td>
+      <td>€${expense.amount.toFixed(2)}</td>
+      <td><button onclick="deleteExpense(${index})">X</button></td>
+    `;
+    expenseList.appendChild(tr);
+  });
+
+  totalAmountEl.textContent = `€${total.toFixed(2)}`;
+  topCategoryEl.textContent = getTopCategory(categoryTotals);
+  emptyState.style.display = expenses.length === 0 ? "block" : "none";
+}
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
