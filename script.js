@@ -56,11 +56,12 @@ function renderDashboard() {
     `;
     expenseList.appendChild(tr);
   });
-
   totalAmountEl.textContent = `€${total.toFixed(2)}`;
   topCategoryEl.textContent = getTopCategory(categoryTotals);
 
-  updateChart(categoryTotals);
+  setTimeout(() => {
+    updateChart(categoryTotals);
+  }, 0);
 }
 
 // ==========================
