@@ -41,8 +41,7 @@ function renderDashboard() {
       <td>${expense.description}</td>
       <td>${expense.category}</td>
       <td>€${expense.amount.toFixed(2)}</td>
-      <td><button onclick="deleteExpense(${index})">X</button></td>
-    `;
+      <td><button onclick="deleteExpense(${index})">X</button></td>;
     expenseList.appendChild(tr);
   });
 
@@ -63,6 +62,7 @@ function renderDashboard() {
 
   totalAmountEl.textContent = `€${total.toFixed(2)}`;
   topCategoryEl.textContent = getTopCategory(categoryTotals);
+  updateChart(categoryTotals);
 }
 
 function deleteExpense(index) {
