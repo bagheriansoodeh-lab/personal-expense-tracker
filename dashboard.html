@@ -16,46 +16,47 @@
     </nav>
   </header>
 
-  <!-- DASHBOARD CONTENT -->
+  <!-- DASHBOARD -->
   <section class="dashboard">
-    <h1>Your Dashboard</h1>
+    <h1>Expense Dashboard</h1>
 
+    <!-- CARDS -->
     <div class="cards">
       <div class="card">
         <h3>Total Expenses</h3>
         <p class="amount" id="totalAmount">€0</p>
       </div>
-
       <div class="card">
         <h3>Top Category</h3>
         <p class="amount" id="topCategory">-</p>
       </div>
     </div>
 
-    <!-- ADD EXPENSE -->
+    <!-- FORM -->
     <div class="form">
       <input type="number" id="amountInput" placeholder="Amount">
       <select id="categoryInput">
-        <option value="Food">Food</option>
-        <option value="Rent">Rent</option>
-        <option value="Transport">Transport</option>
-        <option value="Other">Other</option>
+        <option>Food</option>
+        <option>Rent</option>
+        <option>Transport</option>
+        <option>Other</option>
       </select>
       <input type="text" id="descriptionInput" placeholder="Description">
       <button onclick="addExpense()">Add Expense</button>
     </div>
 
+    <!-- TABLE -->
     <table class="expense-table">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Category</th>
-      <th onclick="sortByAmount()">Amount (€)</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody id="expenseList"></tbody>
-</table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Category</th>
+          <th onclick="sortByAmount()">Amount (€)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="expenseList"></tbody>
+    </table>
   </section>
 
   <script src="script.js"></script>
