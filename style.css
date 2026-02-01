@@ -1,8 +1,12 @@
+/* ======================
+   RESET & BASE
+====================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Inter, Arial, sans-serif;
+  transition: all 0.2s ease;
 }
 
 body {
@@ -10,7 +14,9 @@ body {
   color: #111827;
 }
 
-/* HEADER */
+/* ======================
+   HEADER
+====================== */
 .header {
   background: white;
   padding: 18px 60px;
@@ -33,7 +39,13 @@ nav a {
   color: #374151;
 }
 
-/* HERO */
+nav a:hover {
+  color: #4f46e5;
+}
+
+/* ======================
+   HERO
+====================== */
 .hero {
   max-width: 1100px;
   margin: 80px auto;
@@ -65,7 +77,14 @@ nav a {
   display: inline-block;
 }
 
-/* DASHBOARD */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+}
+
+/* ======================
+   DASHBOARD
+====================== */
 .dashboard {
   max-width: 1200px;
   margin: 60px auto;
@@ -80,7 +99,9 @@ nav a {
   margin-bottom: 30px;
 }
 
-/* CARDS */
+/* ======================
+   CARDS
+====================== */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -95,6 +116,10 @@ nav a {
   border-radius: 18px;
 }
 
+.card:hover {
+  transform: translateY(-6px);
+}
+
 .card h3 {
   font-size: 16px;
   opacity: 0.9;
@@ -106,7 +131,9 @@ nav a {
   margin-top: 10px;
 }
 
-/* FORM */
+/* ======================
+   FORM
+====================== */
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr auto;
@@ -130,7 +157,13 @@ nav a {
   cursor: pointer;
 }
 
-/* TABLE */
+.form button:hover {
+  transform: translateY(-2px);
+}
+
+/* ======================
+   TABLE
+====================== */
 .expense-table {
   width: 100%;
   border-collapse: collapse;
@@ -149,7 +182,7 @@ nav a {
   border-bottom: 1px solid #e5e7eb;
 }
 
-.expense-table tr: hover {
+.expense-table tr:hover {
   background: #f9fafb;
 }
 
@@ -162,206 +195,18 @@ nav a {
   cursor: pointer;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  margin: 40px 0;
-  color: #6b7280;
-}
-/* SMOOTH FEEL */
-* {
-  transition: all 0.2s ease;
-}
-
-/* NAV HOVER */
-nav a: hover {
-  color: #4f46e5;
-}
-
-/* BUTTON HOVER */
-.btn: hover,
-.form button: hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(79,70,229,0.3);
-}
-
-/* CARD HOVER */
-.card: hover {
-  transform: translateY(-6px);
-}
-.expense-table th:first-child,
-.expense-table td:first-child {
-  padding-left: 20px;
-}
-
-.expense-table th:last-child,
-.expense-table td:last-child {
-  text-align: right;
-  padding-right: 20px;
-}
-/* HOME PAGE FEATURES SECTION */
-.features {
-  max-width: 1100px;
-  margin: 0 auto 80px auto;
-  padding: 0 40px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.feature {
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  text-align: left;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-}
-
-.feature h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.feature p {
-  color: #6b7280;
-  font-size: 15px;
-}
-
-/* HOME PAGE ABOUT SECTION */
-.about {
-  max-width: 900px;
-  margin: 0 auto 100px auto;
-  padding: 80px 40px;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.about p {
-  font-size: 17px;
-  color: #6b7280;
-  line-height: 1.7;
-}
-
-/* FOOTER FIX */
-.footer {
-  padding: 30px;
-  background: white;
-  text-align: center;
-  color: #6b7280;
-}
-/* BAR CHART */
+/* ======================
+   CHART
+====================== */
 .chart {
   display: flex;
   align-items: flex-end;
-  gap: 20px;
-  height: 200px;
-  margin: 40px 0 60px 0;
+  gap: 24px;
+  height: 220px;
+  margin: 50px 0 70px 0;
   position: relative;
 }
 
-.bar {
-  flex: 1;
-  background: #6366f1;
-  border-radius: 8px 8px 0 0;
-  height: 0;
-  position: relative;
-}
-
-.bar::after {
-  content: attr(id);
-  position: absolute;
-  bottom: -25px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  color: #6b7280;
-}
-/* CHART */
-.chart {
-  display: flex;
-  align-items: flex-end;
-  gap: 20px;
-  height: 200px;
-  margin: 20px 0 40px 0;
-  position: relative;
-}
-
-.bar {
-  flex: 1;
-  background: #4f46e5;
-  border-radius: 8px 8px 0 0;
-  height: 0;
-  transition: height 0.3s ease;
-  position: relative;
-}
-
-.bar::after {
-  content: attr(data-category);
-  position: absolute;
-  bottom: -25px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  color: #6b7280;
-}
-.bar {
-  min-height: 10px; /* 👈 باعث میشه صفر دیده نشه */
-}
-
-.bar::before {
-  content: attr(data-value) " €";
-  position: absolute;
-  top: -25px;
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  color: #111827;
-}
-.chart {
-  display: flex;
-  align-items: flex-end;
-  gap: 20px;
-  height: 200px;
-  margin-bottom: 40px;
-}
-
-.bar {
-  flex: 1;
-  background: #4f46e5;
-  border-radius: 8px 8px 0 0;
-  position: relative;
-  text-align: center;
-  color: white;
-  font-size: 12px;
-}
-
-.bar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 35px;
-}
-
-/* VALUE (NUMBER) */
-.bar span {
-  position: absolute;
-  top: -30px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #111827;
-}
-
-/* CATEGORY LABEL */
-.bar label {
-  position: absolute;
-  bottom: -30px;
-  font-size: 13px;
-  color: #6b7280;
-}
 .chart::after {
   content: "";
   position: absolute;
@@ -370,4 +215,42 @@ nav a: hover {
   bottom: 0;
   height: 1px;
   background: #e5e7eb;
+}
+
+.bar {
+  flex: 1;
+  background: #4f46e5;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 8px;
+}
+
+/* VALUE */
+.bar span {
+  position: absolute;
+  top: -28px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* LABEL */
+.bar label {
+  position: absolute;
+  bottom: -32px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ======================
+   FOOTER
+====================== */
+.footer {
+  padding: 30px;
+  background: white;
+  text-align: center;
+  color: #6b7280;
 }
