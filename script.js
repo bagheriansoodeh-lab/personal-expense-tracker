@@ -73,7 +73,7 @@ function deleteExpense(index) {
 
 function sortByAmount() {
   expenses.sort((a, b) =>
-    sortAscending ? a.amount - b.amount : b.amount - a.amount
+    sortAscending? a.amount - b.amount : b.amount - a.amount
   );
   sortAscending = !sortAscending;
   renderDashboard();
