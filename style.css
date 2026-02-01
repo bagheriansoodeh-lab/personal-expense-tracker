@@ -168,3 +168,24 @@ nav a {
   margin: 40px 0;
   color: #6b7280;
 }
+/* SMOOTH FEEL */
+* {
+  transition: all 0.2s ease;
+}
+
+/* NAV HOVER */
+nav a:hover {
+  color: #4f46e5;
+}
+
+/* BUTTON HOVER */
+.btn:hover,
+.form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+}
+
+/* CARD HOVER */
+.card:hover {
+  transform: translateY(-6px);
+}
