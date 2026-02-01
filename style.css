@@ -259,7 +259,8 @@ nav a: hover {
   align-items: flex-end;
   gap: 20px;
   height: 200px;
-  margin-bottom: 40px;
+  margin: 40px 0 60px 0;
+  position: relative;
 }
 
 .bar {
@@ -286,6 +287,7 @@ nav a: hover {
   gap: 20px;
   height: 200px;
   margin: 20px 0 40px 0;
+  position: relative;
 }
 
 .bar {
@@ -337,17 +339,35 @@ nav a: hover {
   font-size: 12px;
 }
 
-.bar span {
-  position: absolute;
-  top: -22px;
-  width: 100%;
-  color: #111;
+.bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 35px;
 }
 
+/* VALUE (NUMBER) */
+.bar span {
+  position: absolute;
+  top: -30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* CATEGORY LABEL */
 .bar label {
   position: absolute;
-  bottom: -22px;
-  width: 100%;
+  bottom: -30px;
   font-size: 13px;
   color: #6b7280;
+}
+.chart::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #e5e7eb;
 }
