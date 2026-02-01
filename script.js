@@ -1,8 +1,12 @@
-// LOAD DATA
+// ==========================
+// LOAD SAVED DATA
+// ==========================
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let sortAscending = true;
 
+// ==========================
 // DOM ELEMENTS
+// ==========================
 const expenseList = document.getElementById("expenseList");
 const amountInput = document.getElementById("amountInput");
 const categoryInput = document.getElementById("categoryInput");
@@ -10,7 +14,9 @@ const descriptionInput = document.getElementById("descriptionInput");
 const totalAmountEl = document.getElementById("totalAmount");
 const topCategoryEl = document.getElementById("topCategory");
 
+// ==========================
 // ADD EXPENSE
+// ==========================
 function addExpense() {
   const amount = parseFloat(amountInput.value);
   const category = categoryInput.value;
@@ -26,7 +32,9 @@ function addExpense() {
   descriptionInput.value = "";
 }
 
+// ==========================
 // RENDER DASHBOARD
+// ==========================
 function renderDashboard() {
   expenseList.innerHTML = "";
 
@@ -52,18 +60,21 @@ function renderDashboard() {
   totalAmountEl.textContent = `€${total.toFixed(2)}`;
   topCategoryEl.textContent = getTopCategory(categoryTotals);
 
-  // 🔴 THIS LINE IS CRITICAL FOR THE CHART
   updateChart(categoryTotals);
 }
 
+// ==========================
 // DELETE EXPENSE
+// ==========================
 function deleteExpense(index) {
   expenses.splice(index, 1);
   saveExpenses();
   renderDashboard();
 }
 
+// ==========================
 // SORT TABLE
+// ==========================
 function sortByAmount() {
   expenses.sort((a, b) =>
     sortAscending ? a.amount - b.amount : b.amount - a.amount
@@ -72,7 +83,9 @@ function sortByAmount() {
   renderDashboard();
 }
 
+// ==========================
 // TOP CATEGORY
+// ==========================
 function getTopCategory(totals) {
   let max = 0;
   let top = "-";
@@ -86,12 +99,16 @@ function getTopCategory(totals) {
   return top;
 }
 
-// SAVE TO STORAGE
+// ==========================
+// SAVE TO LOCAL STORAGE
+// ==========================
 function saveExpenses() {
   localStorage.setItem("expenses", JSON.stringify(expenses));
 }
 
-// BAR CHART LOGIC
+// ==========================
+// BAR CHART (VISIBLE VERSION)
+// ==========================
 function updateChart(categoryTotals) {
   const bars = document.querySelectorAll(".bar");
   const values = Object.values(categoryTotals);
@@ -100,9 +117,13 @@ function updateChart(categoryTotals) {
   bars.forEach(bar => {
     const category = bar.dataset.category;
     const value = categoryTotals[category] || 0;
-    bar.style.height = (value / max) * 100 + "%";
+
+    bar.style.height = (value / max) * 150 + "px";
+    bar.setAttribute("data-value", value);
   });
 }
 
+// ==========================
 // INITIAL LOAD
+// ==========================
 renderDashboard();
