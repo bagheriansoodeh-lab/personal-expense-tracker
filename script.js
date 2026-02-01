@@ -1,11 +1,11 @@
 // ==========================
-// LOAD SAVED DATA
+// DATA
 // ==========================
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let sortAscending = true;
 
 // ==========================
-// DOM ELEMENTS
+// DOM
 // ==========================
 const expenseList = document.getElementById("expenseList");
 const amountInput = document.getElementById("amountInput");
@@ -13,16 +13,17 @@ const categoryInput = document.getElementById("categoryInput");
 const descriptionInput = document.getElementById("descriptionInput");
 const totalAmountEl = document.getElementById("totalAmount");
 const topCategoryEl = document.getElementById("topCategory");
+const chartContainer = document.querySelector(".chart");
 
 // ==========================
 // ADD EXPENSE
 // ==========================
 function addExpense() {
-  const amount = parseFloat(amountInput.value);
+  const amount = Number(amountInput.value);
   const category = categoryInput.value;
-  const description = descriptionInput.value.trim();
+  const description = descriptionInput.value;
 
-  if (!amount || amount <= 0) return;
+  if (!amount) return;
 
   expenses.push({ amount, category, description });
   saveExpenses();
@@ -37,13 +38,13 @@ function addExpense() {
 // ==========================
 function renderDashboard() {
   expenseList.innerHTML = "";
+  chartContainer.innerHTML = "";
 
   let total = 0;
   const categoryTotals = {};
 
   expenses.forEach((expense, index) => {
     total += expense.amount;
-
     categoryTotals[expense.category] =
       (categoryTotals[expense.category] || 0) + expense.amount;
 
@@ -56,16 +57,34 @@ function renderDashboard() {
     `;
     expenseList.appendChild(tr);
   });
+
   totalAmountEl.textContent = `€${total.toFixed(2)}`;
   topCategoryEl.textContent = getTopCategory(categoryTotals);
 
-  setTimeout(() => {
-    updateChart(categoryTotals);
-  }, 0);
+  renderChart(categoryTotals);
 }
 
 // ==========================
-// DELETE EXPENSE
+// CHART (BUILT FROM SCRATCH)
+// ==========================
+function renderChart(totals) {
+  const categories = ["Food", "Rent", "Transport", "Other"];
+  const max = Math.max(...Object.values(totals), 1);
+
+  categories.forEach(cat => {
+    const value = totals[cat] || 0;
+
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.style.height = (value / max) * 160 + "px";
+    bar.innerHTML = `<span>${value} €</span><label>${cat}</label>`;
+
+    chartContainer.appendChild(bar);
+  });
+}
+
+// ==========================
+// HELPERS
 // ==========================
 function deleteExpense(index) {
   expenses.splice(index, 1);
@@ -73,9 +92,6 @@ function deleteExpense(index) {
   renderDashboard();
 }
 
-// ==========================
-// SORT TABLE
-// ==========================
 function sortByAmount() {
   expenses.sort((a, b) =>
     sortAscending ? a.amount - b.amount : b.amount - a.amount
@@ -84,47 +100,23 @@ function sortByAmount() {
   renderDashboard();
 }
 
-// ==========================
-// TOP CATEGORY
-// ==========================
 function getTopCategory(totals) {
   let max = 0;
   let top = "-";
-
-  for (const category in totals) {
-    if (totals[category] > max) {
-      max = totals[category];
-      top = category;
+  for (let k in totals) {
+    if (totals[k] > max) {
+      max = totals[k];
+      top = k;
     }
   }
   return top;
 }
 
-// ==========================
-// SAVE TO LOCAL STORAGE
-// ==========================
 function saveExpenses() {
   localStorage.setItem("expenses", JSON.stringify(expenses));
 }
 
 // ==========================
-// BAR CHART (VISIBLE VERSION)
-// ==========================
-function updateChart(categoryTotals) {
-  const bars = document.querySelectorAll(".bar");
-  const values = Object.values(categoryTotals);
-  const max = Math.max(...values, 1);
-
-  bars.forEach(bar => {
-    const category = bar.dataset.category;
-    const value = categoryTotals[category] || 0;
-
-    bar.style.height = (value / max) * 150 + "px";
-    bar.setAttribute("data-value", value);
-  });
-}
-
-// ==========================
-// INITIAL LOAD
+// INIT
 // ==========================
 renderDashboard();
